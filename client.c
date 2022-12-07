@@ -70,6 +70,10 @@ void uh_http_header(struct client *cl, int code, const char *summary)
 	if (!r->connection_close)
 		ustream_printf(cl->us, "Keep-Alive: timeout=%d\r\n", conf.http_keepalive);
 
+	// add response header remove frames
+	ustream_printf(cl->us, "X-Frame-Options: SAMEORIGIN");
+
+
 	blobmsg_for_each_attr(cur, cl->hdr_response.head, rem)
 		ustream_printf(cl->us, "%s: %s\r\n", blobmsg_name(cur),
 			       blobmsg_get_string(cur));

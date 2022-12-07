@@ -242,12 +242,7 @@ static void add_lua_prefix(const char *prefix, const char *handler) {
 #endif
 
 int main(int argc, char **argv)
-
-
-
-
-
-
+{
 	struct alias *alias;
 	bool nofork = false;
 	char *port;
